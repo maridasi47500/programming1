@@ -1,0 +1,32 @@
+<%= form_with(model: script) do |form| %>
+  <% if script.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(script.errors.count, "error") %> prohibited this script from being saved:</h2>
+
+      <ul>
+        <% script.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :programminglanguage_id, style: "display: block" %>
+    <%= form.number_field :programminglanguage_id %>
+  </div>
+
+  <div>
+    <%= form.label :mypart_id, style: "display: block" %>
+    <%= form.number_field :mypart_id %>
+  </div>
+
+  <div>
+    <%= form.label :filename, style: "display: block" %>
+    <%= form.text_field :filename %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

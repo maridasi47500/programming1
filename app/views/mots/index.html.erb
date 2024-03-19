@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Mots</h1>
+
+<div id="mots">
+  <% @mots.each do |mot| %>
+    <%= render mot %>
+    <p>
+      <%= link_to "Show this mot", mot %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New mot", new_mot_path %>

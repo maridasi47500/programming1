@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @algo %>
+
+<div>
+  <%= link_to "Edit this algo", edit_algo_path(@algo) %> |
+  <%= link_to "Back to algos", algos_path %>
+
+  <%= button_to "Destroy this algo", @algo, method: :delete %>
+</div>

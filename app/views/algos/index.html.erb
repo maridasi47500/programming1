@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Algos</h1>
+
+<div id="algos">
+  <% @algos.each do |algo| %>
+    <%= render algo %>
+    <p>
+      <%= link_to "Show this algo", algo %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New algo", new_algo_path %>

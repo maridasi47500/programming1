@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mypart_id: 1
+  mot: MyString
+  description: MyString
+
+two:
+  mypart_id: 1
+  mot: MyString
+  description: MyString

@@ -1,0 +1,27 @@
+<%= form_with(model: mypart) do |form| %>
+  <% if mypart.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(mypart.errors.count, "error") %> prohibited this mypart from being saved:</h2>
+
+      <ul>
+        <% mypart.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :algo_id, style: "display: block" %>
+    <%= form.number_field :algo_id %>
+  </div>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

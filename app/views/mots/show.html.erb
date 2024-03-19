@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @mot %>
+
+<div>
+  <%= link_to "Edit this mot", edit_mot_path(@mot) %> |
+  <%= link_to "Back to mots", mots_path %>
+
+  <%= button_to "Destroy this mot", @mot, method: :delete %>
+</div>

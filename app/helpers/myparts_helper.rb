@@ -1,0 +1,2 @@
+module MypartsHelper
+end
