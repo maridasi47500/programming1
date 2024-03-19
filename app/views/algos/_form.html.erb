@@ -20,6 +20,17 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_field :description %>
   </div>
+  <%@x=1%>
+  <%=form.fields_for :myparts do |hey|%>
+    <p>
+    mon script  #<%=@x%>
+    </p>
+  <div>
+    <%= hey.label :title, style: "display: block" %>
+    <%= hey.text_area :title %>
+  </div>
+  <%@x+=1%>
+  <%end%>
 
   <div>
     <%= form.submit %>

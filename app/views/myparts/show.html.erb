@@ -1,10 +1,56 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @mypart %>
+<h1><%= @mypart.title %></h1>
+<%@mypart.mots.each do |hey|%>
+  <p><b><%=hey.mot%></b> : <%=hey.description%></p>
+<%end%>
+<!-- Nav tabs -->
+<%paspremier=false%>
+<ul class="nav nav-tabs" id="myTabDessin" role="tablist">
+  <%@mypart.drawings.each do |hey|%>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link <%=!paspremier ? "active" : ""%>" id="drawing<%=hey.id%>-tab" data-bs-toggle="tab" data-bs-target="#drawing<%=hey.id%>" type="button" role="tab" aria-controls="drawing<%=hey.id%>" aria-selected="<%=!paspremier ? "true" : "false"%>"><%=hey.title%></button>
+            </li>
+<%paspremier=true%>
+          <%end%>
+</ul>
+
+<!-- Tab panes -->
+<%paspremier=false%>
+<div class="tab-content">
+  <%@mypart.drawings.each do |hey|%>
+    <div class="tab-pane <%=!paspremier ? "active" : ""%>" id="drawing<%=hey.id%>" role="tabpanel" aria-labelledby="drawing<%=hey.id%>-tab" tabindex="0"><%=image_tag("/uploads/#{hey.image}")%></div>
+<%paspremier=true%>
+          <%end%>
+</div>
+<!-- Nav tabs -->
+<%paspremier=false%>
+<ul class="nav nav-tabs" id="myTabDessin" role="tablist">
+  <%@mypart.scripts.each do |hey|%>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link <%=!paspremier ? "active" : ""%>" id="program<%=hey.id%>-tab" data-bs-toggle="tab" data-bs-target="#program<%=hey.id%>" type="button" role="tab" aria-controls="program<%=hey.id%>" aria-selected="<%=!paspremier ? "true" : "false"%>"><%=hey.programminglanguage.name%> </button>
+            </li>
+<%paspremier=true%>
+          <%end%>
+</ul>
+
+<!-- Tab panes -->
+<%paspremier=false%>
+<div class="tab-content">
+  <%@mypart.scripts.each do |hey|%>
+    <div class="tab-pane <%=!paspremier ? "active" : ""%>" id="program<%=hey.id%>" role="tabpanel" aria-labelledby="program<%=hey.id%>-tab" tabindex="0">
+      <p><%=hey.filename%></p>
+
+      <code><%=simple_format(File.read("#{Rails.root.to_s}/public/uploads/#{hey.filename}"))%></code></div>
+<%paspremier=true%>
+          <%end%>
+</div>
 
 <div>
   <%= link_to "Edit this mypart", edit_mypart_path(@mypart) %> |
-  <%= link_to "Back to myparts", myparts_path %>
+  <%= link_to "ajouter 1 mot", addmot_mypart_path(@mypart) %> |
+  <%= link_to "ajouter 1 dessin", adddrawing_mypart_path(@mypart) %> |
+  <%= link_to "ajouter 1 script", addscript_mypart_path(@mypart) %> |
 
   <%= button_to "Destroy this mypart", @mypart, method: :delete %>
 </div>

@@ -25,7 +25,7 @@
           <a class="nav-link active" aria-current="page" href="/algos">add 1 truc à programmer pour plusieurs langages</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="<%=programminglanguages_path%>">ajouter 1 langage programmation</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,7 +52,18 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 <%Algo.all.each_with_index do |hey,i|%>
-  <a href="#">No. <%=i%>: <%=hey.title%></a>
+  <%=
+    link_to_unless_current("No. #{i+1} : #{hey.title}", algo_path(hey.id)) do
+               link_to("No. #{i+1} : #{hey.title}", algo_path(hey.id),class:"current")
+                   end
+                    %>
+  <%hey.myparts.each_with_index do |hithere,y|%>
+  <%=
+    link_to_unless_current("No. #{i+1}.#{y+1} : #{hithere.title}", mypart_path(hithere.id)) do
+               link_to("No. #{i+1}.#{y+1} : #{hithere.title}", mypart_path(hithere.id),class:"current")
+                   end
+                    %>
+  <%end%>
 <%end%>
 </div>
 

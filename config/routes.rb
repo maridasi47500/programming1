@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
   resources :programminglanguages
   resources :mots
   resources :scripts
   resources :drawings
-  resources :myparts
-  resources :algos
+  resources :myparts do
+    member do
+      get 'addmot'
+      get 'adddrawing'
+      get 'addscript'
+    end
+  end
+  resources :algos do
+    member do
+      get 'addpart'
+    end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

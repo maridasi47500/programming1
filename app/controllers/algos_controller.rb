@@ -1,5 +1,5 @@
 class AlgosController < ApplicationController
-  before_action :set_algo, only: %i[ show edit update destroy ]
+  before_action :set_algo, only: %i[addpart show edit update destroy ]
 
   # GET /algos or /algos.json
   def index
@@ -16,6 +16,10 @@ class AlgosController < ApplicationController
   end
 
   # GET /algos/1/edit
+  def addpart
+    @algo.myparts.new
+    render :edit
+  end
   def edit
   end
 
@@ -65,6 +69,6 @@ class AlgosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def algo_params
-      params.require(:algo).permit(:title, :description)
+      params.require(:algo).permit(:title, :description,:myparts_attributes=>{})
     end
 end

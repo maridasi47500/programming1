@@ -1,5 +1,5 @@
 class MypartsController < ApplicationController
-  before_action :set_mypart, only: %i[ show edit update destroy ]
+  before_action :set_mypart, only: %i[ addmot adddrawing addscript show edit update destroy ]
 
   # GET /myparts or /myparts.json
   def index
@@ -16,6 +16,18 @@ class MypartsController < ApplicationController
   end
 
   # GET /myparts/1/edit
+  def addmot
+    @mypart.mots.new
+    render :edit
+  end
+  def adddrawing
+    @mypart.drawings.new
+    render :edit
+  end
+  def addscript
+    @mypart.scripts.new
+    render :edit
+  end
   def edit
   end
 
@@ -65,6 +77,6 @@ class MypartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def mypart_params
-      params.require(:mypart).permit(:algo_id, :title)
+      params.require(:mypart).permit(:algo_id, :title,:mots_attributes=>{},:drawings_attributes=>{},:scripts_attributes=>{})
     end
 end

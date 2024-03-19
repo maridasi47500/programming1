@@ -20,6 +20,51 @@
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
   </div>
+    <%@x=1%>
+      <%=form.fields_for :mots do |hey|%>
+            <p>
+                mot  #<%=@x%>
+                  </p>
+                    <div>
+                          <%= hey.label :mot, style: "display: block" %>
+                              <%= hey.text_area :mot %>
+                                </div>
+                    <div>
+                          <%= hey.label :description, style: "display: block" %>
+                              <%= hey.text_area :description %>
+                                </div>
+                                  <%@x+=1%>
+                                    <%end%>
+                                      <%@x=1%>
+                                        <%=form.fields_for :drawings do |hey|%>
+                                              <p>
+                                                  mon dessin  #<%=@x%>
+                                                    </p>
+                                                      <div>
+                                                            <%= hey.label :title, style: "display: block" %>
+                                                                <%= hey.text_area :title %>
+                                                                  </div>
+                                                      <div>
+                                                            <%= hey.label :image, style: "display: block" %>
+                                                                <%= hey.file_field(:image,accept:"image/*") %>
+                                                                  </div>
+                                                                    <%@x+=1%>
+                                                                      <%end%>
+                                                                        <%@x=1%>
+                                                                          <%=form.fields_for :scripts do |hey|%>
+                                                                                <p>
+                                                                                    mon script  #<%=@x%>
+                                                                                      </p>
+                                                                                        <div>
+                                                                                              <%= hey.label :programminglanguage_id, style: "display: block" %>
+                                                                                              <%= hey.select :programminglanguage_id, Programminglanguage.all.collect{|x|[x.name, x.id]} %>
+                                                                                                    </div>
+                                                                                        <div>
+                                                                                              <%= hey.label :filename, style: "display: block" %>
+                                                                                                  <%= hey.file_field(:filename, accept: "text/*") %>
+                                                                                                    </div>
+                                                                                                      <%@x+=1%>
+                                                                                                        <%end%>
 
   <div>
     <%= form.submit %>
